@@ -1,7 +1,12 @@
 #принимает два числа и возвращает наибольшее из них
 def max_number(a, b):
     try:
-        return sorted([a, b])[1]
+        a = float(a)
+        b = float(b)
+        if a > b:
+            return a
+        else:
+            return b
     except (TypeError, ValueError):
         print("Аргументы должны быть числами")
 
@@ -31,6 +36,10 @@ def test_max_number():
     assert max_number("fewf", 1) == None, "Ошибка: функция max_number('fewf', 1) должна вернуть None"
     print("Все тесты пройдены!")
 
+#запуск генератора
+for num in even_numbers(10):
+    print (num)
 
-print(list(even_numbers("hh")))
+
+#запуск автотеста
 test_max_number()
