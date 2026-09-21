@@ -1,9 +1,13 @@
 def clean_text(text):
     text = text.lower()
     punctuation = ".,:;!?-—\"'()[]{}"
-    for punct in punctuation:
-        text = text.replace(punct, " ")
-    return text
+    result_text = ""
+    for char in text:
+        if char not in punctuation:
+            result_text += char
+        else:
+            result_text += " "
+    return result_text
 
 
 def find_longest_word(words):
