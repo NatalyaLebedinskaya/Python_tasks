@@ -1,9 +1,8 @@
 # Сумма всех четных чисел от 1 до 100
 def sum_even_numbers():
     result = 0
-    for num in range(1, 101):
-        if num % 2 == 0:
-            result += num
+    for num in range(2, 101, 2):
+        result += num
     return result
 
 
