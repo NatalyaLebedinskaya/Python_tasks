@@ -8,7 +8,7 @@ def sum_even_numbers():
 
 # Создание списка, содержащего квадраты всех нечетных чисел от 1 до 10
 def squares_odd_numbers():
-    data = [i ** 2 for i in range(1, 11) if i % 2 != 0]
+    data = [i ** 2 for i in range(1, 11, 2)]
     return data
 
 
