@@ -1,5 +1,5 @@
 def sum_list(list_1, list_2):
-    result =[]
+    result = []
     min_length = len(list_1) if len(list_1) < len(list_2) else len(list_2)
     for i in range(min_length):
         result.append(list_1[i] + list_2[i])
