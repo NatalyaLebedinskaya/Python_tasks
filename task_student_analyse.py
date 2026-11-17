@@ -48,8 +48,30 @@ def print_students_info(student_list):
                   f"Статус: нет данных\n")
     print(f"Общий средний балл: {calculate_overall_average(student_list):.2f} \n")
 
+
 # Добавляет нового студента
 def add_student(student_list, name, grades):
+    # Проверяем, что имя в виде строки
+    if type(name) != str:
+        print("Ошибка: имя должно быть строкой.")
+        return
+
+    # Проверяем тип данных оценок, делаем их списком при необходимости
+    if type(grades) == str:
+        try:
+            # Заменяем запятые на пробелы (например был ввод "85, 88, 92" или "85, 88, 92" или "85 88 92")
+            clean_grades = grades.replace(",", " ")
+            # Разбиваем по пробелам и превращаем в числа
+            grades = [int(g) for g in clean_grades.split()]
+        except ValueError:
+            print("Ошибка: в строке оценок должны быть только числа через пробел или запятые")
+            return
+
+    # Проверяем, что оценки - это список
+    elif type(grades) != list:
+        print("Ошибка: оценки должны быть списком")
+        return
+
     new_student = {"name": name, "grades": grades}
     student_list.append(new_student)
     calculate_overall_average(student_list)
@@ -73,8 +95,12 @@ students = [
 # Выводим информацию по всем студентам
 print_students_info(students)
 
-# Добавляем нового студента
-add_student(students,"Соколов",[85, 88, 92])
+# Добавляем новых студентов
+add_student(students,"Соколов","85, 88 92")
+
+name_input = input("Введите имя нового студента: ")
+grades_input = input("Введите оценки через пробел или запятые: ")
+add_student(students, name_input, grades_input)
 
 # Удаляем студента с самым низким баллом
 lowest_student = calculate_lowest_grade_student(students)
