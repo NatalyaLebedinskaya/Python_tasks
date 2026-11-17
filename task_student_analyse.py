@@ -66,7 +66,6 @@ def add_student(student_list, name, grades):
         except ValueError:
             print("Ошибка: в строке оценок должны быть только числа через пробел или запятые")
             return
-
     # Проверяем, что оценки - это список
     elif type(grades) != list:
         print("Ошибка: оценки должны быть списком")
