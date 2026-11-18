@@ -52,12 +52,12 @@ def print_students_info(student_list):
 # Добавляет нового студента
 def add_student(student_list, name, grades):
     # Проверяем, что имя в виде строки
-    if type(name) != str:
+    if not isinstance(name, str):
         print("Ошибка: имя должно быть строкой.")
         return
 
     # Проверяем тип данных оценок, делаем их списком при необходимости
-    if type(grades) == str:
+    if isinstance(grades, str):
         try:
             # Заменяем запятые на пробелы (например был ввод "85, 88, 92" или "85, 88, 92" или "85 88 92")
             clean_grades = grades.replace(",", " ")
@@ -67,7 +67,7 @@ def add_student(student_list, name, grades):
             print("Ошибка: в строке оценок должны быть только числа через пробел или запятые")
             return
     # Проверяем, что оценки - это список
-    elif type(grades) != list:
+    elif not isinstance(grades, list):
         print("Ошибка: оценки должны быть списком")
         return
 
@@ -80,6 +80,9 @@ def remove_student(student_list, student):
     if student:
         student_list.remove(student)
         calculate_overall_average(student_list)
+        print(f"Студент {student['name']} удалён")
+    else:
+        print("Нет студента для удаления")
 
 
 # Создаем список студентов
@@ -97,9 +100,9 @@ print_students_info(students)
 # Добавляем новых студентов
 add_student(students,"Соколов","85, 88 92")
 
-name_input = input("Введите имя нового студента: ")
-grades_input = input("Введите оценки через пробел или запятые: ")
-add_student(students, name_input, grades_input)
+#name_input = input("Введите имя нового студента: ")
+#grades_input = input("Введите оценки через пробел или запятые: ")
+#add_student(students, name_input, grades_input)
 
 # Удаляем студента с самым низким баллом
 lowest_student = calculate_lowest_grade_student(students)
